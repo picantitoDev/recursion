@@ -127,7 +127,7 @@ function replicate(repetitions, num, arr = []) {
     return arr
   }
   arr.push(num)
-  return replicate(--repetitions, num, arr)
+  return replicate(repetitions - 1, num, arr)
 }
 console.log(replicate(3, 5)) // [5, 5, 5]
 console.log(replicate(1, 69)) // [69]
