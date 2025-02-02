@@ -19,7 +19,7 @@ function factorial(n) {
 
 function all(array, callback) {
   if (array.length === 0) {
-    return true // Base case for empty array
+    return true
   }
 
   if (array.length === 1) {
@@ -29,13 +29,56 @@ function all(array, callback) {
   return callback(array[0]) && all(array.slice(1), callback)
 }
 
-// [1,2,9] , n < 7 ->
-
 const allAreLessThanSeven = all([4, 3, 2], function (num) {
   return num < 7
 })
 
-console.log(allAreLessThanSeven) // false
+//  if (num == 1) return 1
+//return num + sumRange(num - 1)
+
+function productOfArray(array) {
+  if (array.length === 0) {
+    return 1
+  }
+  return array.shift() * productOfArray(array)
+}
+console.log(productOfArray([1, 2, 3, 10]))
+
+var nestedObject = {
+  data: {
+    info: {
+      stuff: {
+        thing: {
+          moreStuff: {
+            magicNumber: 44,
+            something: "foo2",
+          },
+        },
+      },
+    },
+  },
+}
+
+function contains(nestedObject, value) {
+  for (var prop in nestedObject) {
+    if (Object.prototype.hasOwnProperty.call(nestedObject, prop)) {
+      if (
+        typeof nestedObject[prop] === "object" &&
+        nestedObject[prop] !== null
+      ) {
+        return contains(nestedObject[prop], value)
+      }
+
+      if (nestedObject[prop] === value) {
+        return true
+      }
+    }
+  }
+  return false
+}
+console.log(contains(nestedObject, 44)) // true
+console.log(contains(nestedObject, "foo"))
+// console.log(allAreLessThanSeven) // false
 
 /*
 fact(4) → 4 * fact(3) 
