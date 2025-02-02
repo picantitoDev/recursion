@@ -1,12 +1,18 @@
-console.log(sumRangeRec(3))
+console.log(power(2, 3))
 
-function sumRangeRec(n, sum = 0) {
-  if (n === 1) {
-    return sum + 1
-  }
-  return sumRangeRec(n - 1, sum + n)
+function sumRange(num) {
+  if (num == 1) return 1
+  return num + sumRange(num - 1)
 }
 
-// sumRangeRec(3, sum = 0) = 6
-// sumRangeRec(2, sum = 3) = 6
-// sumRangeRec(1, sum = 5) -> sum + 1 = 6
+function power(base, exp) {
+  if (exp == 0) return 1
+  return base * power(base, exp - 1)
+}
+
+/*
+sumRange(2, 3) → 2 * power(2, 3-1) 
+sumRange(2, 2) → 2 * power(2, 2-1)
+sumRange(2, 1) → 2 * power(2, 1-1)
+sumRange(2, 0) → 1 
+*/
