@@ -91,4 +91,29 @@ function totalIntegers(multiDimensionalArray, total = 0) {
   }
   return total
 }
-console.log(totalIntegers([[[5], 3], 0, 2, ["foo"], [], [4, [5, 6]]]))
+
+function SumSquares(array, total = 0) {
+  for (let int of array) {
+    if (Array.isArray(int)) {
+      total = SumSquares(int, total)
+    }
+
+    if (typeof int === "number") {
+      total += power(int, 2)
+    }
+  }
+  return total
+}
+
+// console.log(totalIntegers([[[5], 3], 0, 2, ["foo"], [], [4, [5, 6]]]))
+var l = [1, 2, 3]
+console.log(SumSquares(l)) // 1 + 4 + 9 = 14
+
+l = [[1, 2], 3]
+console.log(SumSquares(l)) // 1 + 4 + 9 = 14
+
+l = [[[[[[[[[1]]]]]]]]]
+console.log(SumSquares(l)) // 1 = 1
+
+l = [10, [[10], 10], [10]]
+console.log(SumSquares(l)) // 100 + 100 + 100 + 100 = 400
