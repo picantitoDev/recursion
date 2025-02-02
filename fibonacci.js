@@ -1,4 +1,4 @@
-console.log(factorial(5))
+// console.log(factorial(5))
 
 function sumRange(num) {
   if (num == 1) return 1
@@ -16,6 +16,26 @@ function factorial(n) {
   }
   return n * factorial(n - 1)
 }
+
+function all(array, callback) {
+  if (array.length === 0) {
+    return true // Base case for empty array
+  }
+
+  if (array.length === 1) {
+    return callback(array[0])
+  }
+
+  return callback(array[0]) && all(array.slice(1), callback)
+}
+
+// [1,2,9] , n < 7 ->
+
+const allAreLessThanSeven = all([4, 3, 2], function (num) {
+  return num < 7
+})
+
+console.log(allAreLessThanSeven) // false
 
 /*
 fact(4) → 4 * fact(3) 
