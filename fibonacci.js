@@ -78,11 +78,17 @@ function contains(nestedObject, value) {
 }
 console.log(contains(nestedObject, 44)) // true
 console.log(contains(nestedObject, "foo"))
-// console.log(allAreLessThanSeven) // false
 
-/*
-fact(4) → 4 * fact(3) 
-fact() → 2 * power(2, 3-1) 
-fact() → 2 * power(2, 2-1)
-fact() → 2 * power(2, 1-1)
-*/
+function totalIntegers(multiDimensionalArray, total = 0) {
+  for (let int of multiDimensionalArray) {
+    if (Array.isArray(int)) {
+      total = totalIntegers(int, total)
+    }
+
+    if (typeof int === "number") {
+      total++
+    }
+  }
+  return total
+}
+console.log(totalIntegers([[[5], 3], 0, 2, ["foo"], [], [4, [5, 6]]]))
