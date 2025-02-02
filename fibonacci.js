@@ -42,7 +42,7 @@ function productOfArray(array) {
   }
   return array.shift() * productOfArray(array)
 }
-console.log(productOfArray([1, 2, 3, 10]))
+// console.log(productOfArray([1, 2, 3, 10]))
 
 var nestedObject = {
   data: {
@@ -76,8 +76,8 @@ function contains(nestedObject, value) {
   }
   return false
 }
-console.log(contains(nestedObject, 44)) // true
-console.log(contains(nestedObject, "foo"))
+// console.log(contains(nestedObject, 44)) // true
+// console.log(contains(nestedObject, "foo"))
 
 function totalIntegers(multiDimensionalArray, total = 0) {
   for (let int of multiDimensionalArray) {
@@ -106,14 +106,29 @@ function SumSquares(array, total = 0) {
 }
 
 // console.log(totalIntegers([[[5], 3], 0, 2, ["foo"], [], [4, [5, 6]]]))
-var l = [1, 2, 3]
-console.log(SumSquares(l)) // 1 + 4 + 9 = 14
+// var l = [1, 2, 3]
+// console.log(SumSquares(l)) // 1 + 4 + 9 = 14
 
-l = [[1, 2], 3]
-console.log(SumSquares(l)) // 1 + 4 + 9 = 14
+// l = [[1, 2], 3]
+// console.log(SumSquares(l)) // 1 + 4 + 9 = 14
 
-l = [[[[[[[[[1]]]]]]]]]
-console.log(SumSquares(l)) // 1 = 1
+// l = [[[[[[[[[1]]]]]]]]]
+// console.log(SumSquares(l)) // 1 = 1
 
-l = [10, [[10], 10], [10]]
-console.log(SumSquares(l)) // 100 + 100 + 100 + 100 = 400
+// l = [10, [[10], 10], [10]]
+// console.log(SumSquares(l)) // 100 + 100 + 100 + 100 = 400
+
+function replicate(repetitions, num, arr = []) {
+  if (repetitions < 0) {
+    return []
+  }
+
+  if (repetitions === 0) {
+    return arr
+  }
+  arr.push(num)
+  return replicate(--repetitions, num, arr)
+}
+console.log(replicate(3, 5)) // [5, 5, 5]
+console.log(replicate(1, 69)) // [69]
+console.log(replicate(-2, 6)) // []
